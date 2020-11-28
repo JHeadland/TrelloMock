@@ -1,15 +1,11 @@
 package com.example.trellomock.task;
 
 import com.example.trellomock.taskCategory.TaskCategory;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.beans.value.ObservableBooleanValue;
 
 import javax.persistence.*;
-import java.io.IOException;
-import java.nio.channels.Channel;
 import java.time.format.DateTimeFormatter;
-import java.util.EventObject;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.TimerTask;
 
 @Entity
@@ -44,7 +40,7 @@ public class Task extends TimerTask {
     public void run() {
         if(!this.complete)
             overdue = true;
-        this.notifyAll();
+        listener.onEvent();
     }
 
     public Task(Long taskID, int state, String description,TaskCategory category, String createdBy) {
@@ -74,7 +70,13 @@ public class Task extends TimerTask {
                 "Task[taskID=%d, description='%s', priority='%d', state='%d', category='%s']",
                 taskID, description, priority, state, taskCategory.getCategoryName());
     }
+    TaskUpdateService listener;
+    public void register(TaskUpdateService listener){
+        this.listener = listener;
+    }
+    public void eventHappens(){
 
+    }
     public int GetPriority() {return priority;}
 
     public int GetState() { return state; }
@@ -123,7 +125,5 @@ public class Task extends TimerTask {
 
     public void setPriority(int priority) {this.priority = priority;}
 
-    public boolean GetOverdue() {
-        return this.overdue;
-    }
+    public boolean GetOverdue() {return this.overdue;}
 }

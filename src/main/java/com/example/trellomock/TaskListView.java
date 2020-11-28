@@ -2,6 +2,10 @@ package com.example.trellomock;
 
 import com.example.trellomock.task.Task;
 import com.example.trellomock.ScheduledTasks;
+import com.example.trellomock.task.TaskUpdateService;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -240,13 +244,24 @@ public class TaskListView extends ListView<Task> {
                     ScheduledTasks.scheduleTaskWithCronExpression();
                 }
                 this.editedTask = t;
-                editedTask.addObserver(this);
+                editedTask.register(new TaskUpdateService() {
+                    @Override
+                    public void onEvent() {
+                        if(editedTask.GetOverdue()) {
+                            editedTask.SetColor("Red");
+                        }else{
+                            editedTask.SetState(0);
+                            editedTask.setComplete(false);
+                        }
+                        refresh();
+                    }
+                });
                 System.out.println("We have a task!");
 
                 System.out.println(this.getItem().GetDescription());
                 taskDialogObservableList.remove(t);
                 Timer timer = new Timer();
-                timer.schedule(editedTask, 0,10000);
+                timer.schedule(editedTask, 5000, 5000);
                 updateItem(t, false);
             }
         }
