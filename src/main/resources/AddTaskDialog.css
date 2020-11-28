@@ -1,0 +1,18 @@
+.ColorButton {
+	-fx-background-color:#44c767;
+	-fx-border-radius:9px;
+	-fx-border-width:1px;
+	-fx-border-style:solid;
+	-fx-border-color:#18ab29;
+	-fx-color:#ffffff;
+	-fx-width:15px;
+	-fx-height:15px;
+	-fx-text-decoration:none;
+}
+.ColorButton:hover {
+	-fx-background-color:#5cbf2a;
+}
+.ColorButton:active {
+	-fx-position:relative;
+	-fx-top:1px;
+}

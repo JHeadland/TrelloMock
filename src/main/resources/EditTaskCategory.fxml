@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane fx:controller="com.example.trellomock.EditTaskCategoryController"
+            xmlns:fx="http://javafx.com/fxml">
+    <GridPane alignment="center" hgap="10" vgap="10" prefWidth="500" prefHeight="350">
+
+        <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+
+        <Text text="Edit Task Category"
+              GridPane.columnIndex="0" GridPane.rowIndex="0"
+              GridPane.columnSpan="2" GridPane.rowSpan="1"/>
+
+        <Label text="Change Name:"
+               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+        <TextField fx:id="nameTextField"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Change Description:"
+               GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+        <TextField fx:id="descriptionTextField"
+                       GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <HBox spacing="10" alignment="bottom_right"
+              GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Button text="Confirm Changes"
+                    onAction="#clickChangeButton" />
+        </HBox>
+
+    </GridPane>
+    <Button text="Cancel" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" onAction="#clickCancelButton" />
+    <Text fx:id="deleteWarning" AnchorPane.bottomAnchor="50" AnchorPane.rightAnchor="20" textAlignment="RIGHT" />
+    <Button text="Delete Task Category" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20" onAction="#clickDeleteButton" />
+</AnchorPane>

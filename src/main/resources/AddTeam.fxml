@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trellomock.AddTeamController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="14.0" text="Create New Team" textAlignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="teamNameField" layoutX="21.0" layoutY="85.0" />
+      <Label layoutX="21.0" layoutY="57.0" text="Team Name">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="191.0" layoutY="147.0" mnemonicParsing="false" onAction="#addNewTeamButton" text="Add Team" />
+      <Button layoutX="21.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleCancelAddTeam" text="Cancel" />
+   </children>
+</AnchorPane>

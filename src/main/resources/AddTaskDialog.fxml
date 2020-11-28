@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import com.example.trellomock.AddTaskDialog?>
+
+<AnchorPane minHeight="600.0" minWidth="400.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.trellomock.AddTaskDialog">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="131.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <children>
+                 <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label alignment="CENTER_LEFT" minWidth="100.0" text="Description: " />
+                        <TextField fx:id="descriptionTextField" HBox.hgrow="ALWAYS" />
+                        <Button styleClass="ColorButton" mnemonicParsing="false" onAction="#HandleAddTask" text="  " />
+                    </children>
+                    <padding>
+                        <Insets right="30.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label alignment="CENTER_LEFT" minWidth="100.0" text="State: " />
+                        <TextField fx:id="stateTextField" HBox.hgrow="ALWAYS" />
+                    </children>
+                    <padding>
+                        <Insets right="30.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="BOTTOM_RIGHT">
+                    <children>
+                        <Button fx:id="createTaskButton" mnemonicParsing="false" onAction="#HandleAddTask" text="Create Task" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#HandleCancelAddTask" text="Cancel" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets right="55" />
+                        <Insets top="35.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+
+
