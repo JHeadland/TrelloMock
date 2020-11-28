@@ -240,9 +240,7 @@ public class TaskListView extends ListView<Task> {
 
             if (taskDialogObservableList.size() > 0) {
                 Task t = taskDialogObservableList.get(taskDialogObservableList.size() - 1);
-                if (t.GetRecurrenceType().equals("Every Ten Seconds")) {
-                    ScheduledTasks.scheduleTaskWithCronExpression();
-                }
+
                 this.editedTask = t;
                 editedTask.register(new TaskUpdateService() {
                     @Override
@@ -261,8 +259,22 @@ public class TaskListView extends ListView<Task> {
                 System.out.println(this.getItem().GetDescription());
                 taskDialogObservableList.remove(t);
                 Timer timer = new Timer();
-                timer.schedule(editedTask, 5000, 5000);
-                updateItem(t, false);
+                if (t.GetRecurrenceType().equals("Every Ten Seconds")) {
+                    timer.schedule(editedTask, 10000, 10000);
+                    updateItem(t, false);
+                }else if (t.GetRecurrenceType().equals("Every Day")){
+                    timer.schedule(editedTask, 86400000, 86400000);
+                    updateItem(t, false);
+                }
+                else if (t.GetRecurrenceType().equals("Every Other Day")){
+                    timer.schedule(editedTask, 86400000*2, 86400000*2);
+                    updateItem(t, false);
+                }
+                else if (t.GetRecurrenceType().equals("Every Week")){
+                    timer.schedule(editedTask, 86400000*7, 86400000*7);
+                    updateItem(t, false);
+                }
+
             }
         }
 
