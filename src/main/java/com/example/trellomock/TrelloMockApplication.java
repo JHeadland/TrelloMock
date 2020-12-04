@@ -17,9 +17,6 @@ import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import com.example.trellomock.DateOps;
-
-import java.time.Duration;
 
 @EnableScheduling
 @SpringBootApplication

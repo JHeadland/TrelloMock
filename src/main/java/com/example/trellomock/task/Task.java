@@ -3,7 +3,6 @@ package com.example.trellomock.task;
 import com.example.trellomock.taskCategory.TaskCategory;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.TimerTask;
 
@@ -38,7 +37,7 @@ public class Task extends TimerTask {
     public void run() {
         if(!this.complete)
             overdue = true;
-        //listener.onEvent();
+        listener.onEvent();
     }
 
     public Task(Long taskID, int state, String description,TaskCategory category, String createdBy) {
@@ -69,10 +68,11 @@ public class Task extends TimerTask {
                 "Task[taskID=%d, description='%s', priority='%d', state='%d', category='%s']",
                 taskID, description, priority, state, taskCategory.getCategoryName());
     }
-    TaskUpdateService listener;
+    transient TaskUpdateService listener;
     public void register(TaskUpdateService listener){
         this.listener = listener;
     }
+
     public void eventHappens(){
 
     }

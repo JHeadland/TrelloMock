@@ -2,7 +2,6 @@ package com.example.trellomock;
 
 import com.example.trellomock.member.Member;
 import com.example.trellomock.member.MemberRepository;
-import com.example.trellomock.task.Task;
 import com.example.trellomock.task.TaskRepository;
 import com.example.trellomock.team.Team;
 import com.example.trellomock.team.TeamRepository;
@@ -11,10 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 
