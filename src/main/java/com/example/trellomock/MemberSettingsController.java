@@ -113,6 +113,7 @@ public class MemberSettingsController implements DialogController, Initializable
         dialog.close();
         screens.loginDialog().show();
         refresh();
+        screens.adminController().refresh();
     }
 
     @FXML
