@@ -63,6 +63,12 @@ public class BoardController implements DialogController, Initializable {
         testingList.setTaskListState(3);
         doneList.setTaskListState(4);
 
+        backlogList.setScreens(this.screens);
+        toDoList.setScreens(this.screens);
+        doingList.setScreens(this.screens);
+        testingList.setScreens(this.screens);
+        doneList.setScreens(this.screens);
+
         member = memberRepository.findByLogged(true);
         tasks = member.getAssignedTasks();
 
@@ -179,5 +185,17 @@ public class BoardController implements DialogController, Initializable {
     public void taskCategoryButton() {
         dialog.close();
         screens.taskCategoryDialog().show();
+    }
+
+    public void moveToDone(Task t, int ogState) {
+        switch(ogState)
+        {
+            case 0: backlogList.getItems().remove(t); break;
+            case 1: toDoList.getItems().remove(t); break;
+            case 2: doingList.getItems().remove(t); break;
+            case 3: testingList.getItems().remove(t); break;
+            case 4: doneList.getItems().remove(t); break;
+        }
+        doneList.getItems().add(t);
     }
 }

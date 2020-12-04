@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
 import javafx.event.ActionEvent;
@@ -30,6 +31,10 @@ import java.util.Timer;
 public class TaskListView extends ListView<Task> {
     private static Task draggedTask;
     private int taskListState;
+
+    private ScreensConfiguration screens;
+
+    public void setScreens(ScreensConfiguration screens) { this.screens = screens; }
 
     public TaskListView() {
         this.setCellFactory(param -> new TaskCell());
@@ -169,10 +174,12 @@ public class TaskListView extends ListView<Task> {
             completeTaskButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent a) {
+                    int state = thisCell.getItem().GetState();
                     thisCell.getItem().setComplete(true);
                     thisCell.getItem().SetState(4);
                     thisCell.getItem().SetColor("LightGreen");
                     updateItem(thisCell.getItem(), false);
+                    screens.boardController().moveToDone(thisCell.getItem(), state);
                 }
             });
         }
