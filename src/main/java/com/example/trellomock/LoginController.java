@@ -44,8 +44,14 @@ public class LoginController implements DialogController {
             memberRepository.save(member);
             System.out.println(member.getLogged());
 
-            dialog.close();
-            screens.boardDialog().show();
+            if (member.getAdminPrivileges()) {
+                dialog.close();
+                screens.adminDialog().show();
+            }
+            else {
+                dialog.close();
+                screens.boardDialog().show();
+            }
         }
         else {
             incorrectLogin.setText("Incorrect email or password.");

@@ -55,6 +55,12 @@ public class TrelloMockApplication {
 			memberRepository.save(new Member("Nathan", "Nava", "ncolenava@gmail.com","password", team));
 			memberRepository.save(new Member("Niels", "Moeller", "nielsmoeller9@gmail.com", "password", team));
 			memberRepository.save(new Member("Miguel", "Dominguez", "migueld225@gmail.com", "password", team));
+			memberRepository.save(new Member("Itachi", "Uchiha", "youngsharingan@hidden.leaf", "password", teamRepository.findById(2L)));
+
+			// set Ad Min to admin
+			Member mem = memberRepository.findById(1L);
+			mem.setAdminPrivileges(true);
+			memberRepository.save(mem);
 
 			// Create new Task Category
 			TaskCategory category1 = new TaskCategory(1L,"Front end development", "Ad Min", java.time.LocalDate.now().toString());

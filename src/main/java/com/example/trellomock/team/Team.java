@@ -60,4 +60,8 @@ public class Team implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int getStoryPoints() {
+        return members.stream().mapToInt(Member::getStoryPoints).sum();
+    }
 }

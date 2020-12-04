@@ -20,6 +20,7 @@ public class Member implements Serializable {
     private String password;
     private boolean adminPrivileges;
     private boolean logged = false;
+    private int storyPoints;
 
     private ArrayList<Long> tasks;
 
@@ -40,6 +41,7 @@ public class Member implements Serializable {
         this.team = team;
         this.adminPrivileges = false;
         this.tasks = new ArrayList<Long>();
+        this.storyPoints = 0;
     }
 
     @Override
@@ -83,6 +85,8 @@ public class Member implements Serializable {
         return adminPrivileges;
     }
 
+    public void setAdminPrivileges(boolean ap) { this.adminPrivileges = ap; }
+
     public Team getTeam() {
         return team;
     }
@@ -99,4 +103,7 @@ public class Member implements Serializable {
 
     public void setLogged(boolean logged) { this.logged = logged; }
 
+    public int getStoryPoints() { return this.storyPoints; }
+
+    public void addStoryPoints(int sp) { this.storyPoints += sp; }
 }

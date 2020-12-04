@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.example.trellomock.AdminController">
+   <children>
+       <GridPane alignment="center" hgap="10" prefHeight="600" prefWidth="800" vgap="10">
+   
+           <padding>
+            <Insets bottom="25" left="25" right="25" top="25" />
+         </padding>
+          <children>
+      
+              <Text text="Administrative Page" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="1" />
+
+              <Text text="Story Points" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      
+              <Label text="Team" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      
+              <ComboBox fx:id="teamComboBox" promptText="Select Team" onAction="#clickComboBoxTeam" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
+              <Text fx:id="teamSP" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+              <Label text="Members" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+
+              <ListView fx:id="memberList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+
+              <Text fx:id="memberSP" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP" lineSpacing="8.0" />
+
+          </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+   
+       </GridPane>
+       <Button onAction="#HandleAddTaskClicked" text="Add Team" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" />
+       <Button onAction="#clickBoardButton" text="Go to Board →" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20" />
+   </children>
+</AnchorPane>

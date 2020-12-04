@@ -123,4 +123,15 @@ public class ScreensConfiguration {
     EditTaskCategoryController editTaskCategoryController() {
         return new EditTaskCategoryController(this);
     }
+
+    @Bean
+    FXMLDialog adminDialog() {
+        return new FXMLDialog(adminController(), getClass().getResource("/Admin.fxml"), primaryStage);
+    }
+
+    @Bean
+    AdminController adminController() {
+        return new AdminController(this);
+    }
+
 }
