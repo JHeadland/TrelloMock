@@ -3,6 +3,7 @@ package com.example.trellomock;
 import com.example.trellomock.member.Member;
 import com.example.trellomock.member.MemberRepository;
 import com.example.trellomock.task.Task;
+import com.example.trellomock.task.TaskRepository;
 import com.example.trellomock.team.Team;
 import com.example.trellomock.team.TeamRepository;
 import javafx.collections.FXCollections;
@@ -45,6 +46,8 @@ public class AdminController implements DialogController, Initializable {
     TeamRepository teamRepository;
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    TaskRepository taskRepository;
 
     private Team team;
     private Member member;
@@ -97,7 +100,13 @@ public class AdminController implements DialogController, Initializable {
         for (int i = 0; i < members.length; i++) {
             member = (Member) members[i];
             memberList.getItems().add(member.getFirstName() + " " + member.getLastName());
-            mspStr += member.getStoryPoints() + "\n";
+            ArrayList<Long> tasks = member.getAssignedTasks();
+            Member finalMember = member;
+            tasks.forEach(tid -> {
+                if (taskRepository.findById(tid).get().GetState() == 4)
+                    finalMember.addStoryPoints(taskRepository.findById(tid).get().GetSPoints());
+            });
+            mspStr += finalMember.getStoryPoints() + "\n";
         }
 
         teamSP.setText(String.valueOf(team.getStoryPoints()));
