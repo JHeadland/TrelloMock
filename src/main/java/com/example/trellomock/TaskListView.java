@@ -175,6 +175,7 @@ public class TaskListView extends ListView<Task> {
                 @Override
                 public void handle(ActionEvent a) {
                     int state = thisCell.getItem().GetState();
+                    thisCell.getItem().SetOverdue(false);
                     thisCell.getItem().setComplete(true);
                     thisCell.getItem().SetState(4);
                     thisCell.getItem().SetColor("LightGreen");
@@ -250,6 +251,8 @@ public class TaskListView extends ListView<Task> {
                         } else {
                             editedTask.SetState(0);
                             editedTask.setComplete(false);
+                            editedTask.SetColor("");
+                            screens.boardController().moveToBacklog(t);
                         }
                         refresh();
                     }

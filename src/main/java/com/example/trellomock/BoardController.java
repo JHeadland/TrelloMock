@@ -198,4 +198,10 @@ public class BoardController implements DialogController, Initializable {
         }
         doneList.getItems().add(t);
     }
+
+    public void moveToBacklog(Task t)
+    {
+        doneList.getItems().remove(t);
+        backlogList.getItems().add(t);
+    }
 }

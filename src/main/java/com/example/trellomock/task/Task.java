@@ -127,4 +127,6 @@ public class Task extends TimerTask {
     public void setPriority(int priority) {this.priority = priority;}
 
     public boolean GetOverdue() {return this.overdue;}
+
+    public void SetOverdue(boolean od) {this.overdue = od;}
 }
