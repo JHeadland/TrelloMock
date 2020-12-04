@@ -86,7 +86,7 @@ public class ScreensConfiguration {
 
     @Bean
     FXMLDialog addTeamDialog() {
-        return new FXMLDialog(addTeamController(), getClass().getResource("/addTeam.fxml"), primaryStage);
+        return new FXMLDialog(addTeamController(), getClass().getResource("/AddTeam.fxml"), primaryStage);
     }
 
     @Bean

@@ -24,7 +24,7 @@ public class AddTeamController implements DialogController{
     TeamRepository teamRepository;
 
     private ScreensConfiguration screens;
-    private TeamSettingsController settingsController;
+    private AdminController adminController;
     private FXMLDialog dialog;
 
     public void setDialog(FXMLDialog dialog) {
@@ -33,7 +33,7 @@ public class AddTeamController implements DialogController{
 
     public AddTeamController(ScreensConfiguration screens) {
         this.screens = screens;
-        settingsController = screens.teamSettingsController();
+        adminController = screens.adminController();
     }
 
     public void addNewTeamButton(ActionEvent actionEvent) {
@@ -41,12 +41,12 @@ public class AddTeamController implements DialogController{
         if(teamName != null)
             teamRepository.save(new Team(teamName,teamRepository.count()+1));
 
-        settingsController.refresh();
+        adminController.refresh();
         dialog.close();
     }
 
     public void handleCancelAddTeam(ActionEvent actionEvent) {
-        settingsController.refresh();
+        adminController.refresh();
         dialog.close();
     }
 }

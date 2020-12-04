@@ -110,43 +110,4 @@ public class TeamSettingsController implements DialogController, Initializable {
         screens.loginDialog().show();
     }
 
-    @FXML
-    public void clickDeleteButton(ActionEvent actionEvent) {
-        team = teamRepository.findByteamName(teamComboBox.getValue());
-        if (!warningFlag) {
-            deleteWarning.setText("Deletion is irreversible.\nClick delete again to confirm");
-            deleteWarning.setFill(Color.RED);
-            warningFlag = true;
-        }
-        else {
-            teamNameField.setText("");
-
-            dialog.close();
-
-            teamRepository.deleteById(team.getId());
-
-            //Logout
-            if(team.getId() == member.getTeamID()) {
-                screens.loginDialog().show();
-                deleteWarning.setText("Deletion is irreversible.\nClick delete again to confirm");
-            }
-            else {
-                screens.boardDialog().show();
-                deleteWarning.setText("Deletion is irreversible.\nClick delete again to confirm");
-                refresh();
-            }
-
-
-
-            // Test deletion
-            for (Team Team : teamRepository.findAll())
-                System.out.println(Team.toString());
-        }
-    }
-
-        @FXML
-        public void HandleAddTaskClicked(ActionEvent actionEvent) throws IOException {
-            screens.addTeamDialog().show();
-            }
-
 }

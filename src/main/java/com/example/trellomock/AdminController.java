@@ -11,9 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class AdminController implements DialogController, Initializable {
     @FXML private Text teamSP;
     @FXML private Text memberSP;
     @FXML private ListView memberList;
+    @FXML private Text deleteWarning;
 
     @Autowired
     TeamRepository teamRepository;
@@ -73,11 +76,15 @@ public class AdminController implements DialogController, Initializable {
 
     public void displayMembers() {
         memberList.getItems().clear();
+        memberSP.setText("");
         team = teamRepository.findByteamName(teamComboBox.getValue());
+
+        if (team == null)
+            return;
 
         Object[] members = team.getMembers().toArray();
 
-        // Bubble sort; replace with Comparators
+        // TODO Replace bubble sort with Comparators
         Member mem1;
         Member mem2;
         for (int i = 0; i < members.length-1; i++)
@@ -118,6 +125,39 @@ public class AdminController implements DialogController, Initializable {
     @FXML
     public void HandleAddTaskClicked(ActionEvent actionEvent) throws IOException {
         screens.addTeamDialog().show();
+    }
+
+    @FXML
+    public void clickDeleteButton(ActionEvent actionEvent) {
+        team = teamRepository.findByteamName(teamComboBox.getValue());
+        if (!warningFlag) {
+            deleteWarning.setText("Deletion is irreversible.\nClick delete again to confirm");
+            deleteWarning.setFill(Color.RED);
+            warningFlag = true;
+        }
+        else {
+
+            teamRepository.deleteById(team.getId());
+
+            //Logout
+            if(team.getId() == member.getTeamID()) {
+                screens.loginDialog().show();
+                deleteWarning.setText("");
+                warningFlag = false;
+            }
+            else {
+                deleteWarning.setText("");
+                warningFlag = false;
+                refresh();
+            }
+
+
+
+            // Test deletion
+            for (Team Team : teamRepository.findAll())
+                System.out.println(Team.toString());
+        }
+
     }
 
     public void clickComboBoxTeam(ActionEvent actionEvent) {

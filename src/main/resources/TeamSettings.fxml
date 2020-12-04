@@ -47,8 +47,5 @@
    
        </GridPane>
        <Button onAction="#clickLogoutButton" text="Log Out" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" />
-       <Text fx:id="deleteWarning" textAlignment="RIGHT" AnchorPane.bottomAnchor="50" AnchorPane.rightAnchor="20" />
-       <Button onAction="#HandleAddTaskClicked" text="Add Team" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="150.0" />
-       <Button onAction="#clickDeleteButton" text="Delete Team" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20" />
    </children>
 </AnchorPane>
