@@ -54,6 +54,7 @@ public class Task extends TimerTask {
         this.complete = false;
         this.scheduleDate = createdOn;
         this.overdue = false;
+        this.sPoints = 1;
     }
 
     @Override
