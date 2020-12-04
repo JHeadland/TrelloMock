@@ -180,6 +180,10 @@ public class TaskListView extends ListView<Task> {
                 @Override
                 public void handle(ActionEvent a) {
                     thisCell.getItem().setComplete(true);
+                    thisCell.getItem().SetState(4);
+                    thisCell.getItem().SetColor("LightGreen");
+                    thisCell.setText("");
+                    updateItem(thisCell.getItem(),false);
                 }
             });
         }

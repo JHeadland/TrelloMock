@@ -71,7 +71,6 @@ public class BoardController implements DialogController, Initializable {
         for(int i = 0; i < tasks.size(); i++)
         {
             task = taskRepository.findById(tasks.get(i)).get();
-            //task.setComplete(true);
             switch(task.GetState())
             {
                 case 0: backlogList.getItems().add(task); break;
@@ -99,6 +98,8 @@ public class BoardController implements DialogController, Initializable {
                         taskRepository.save(t);
                         if(tlv.getTaskListState() != t.GetState()) { //in wrong list!
                             tlv.remove(t);
+                            System.out.println("in wrong list:");
+                            System.out.println(t);
                             switch(t.GetState())
                             {
                                 case 0: backlogList.getItems().add(t); break;

@@ -3,15 +3,13 @@ package com.example.trellomock.task;
 import com.example.trellomock.taskCategory.TaskCategory;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.TimerTask;
 
 @Entity
 @Table(name = "tasks")
 public class Task extends TimerTask {
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long taskID;
@@ -111,7 +109,9 @@ public class Task extends TimerTask {
 
     public void SetDescription(String desc){this.description = desc;}
 
-    public void SetDueDate(String dueDate){this.dueDate = dueDate;}
+    public void SetDueDate(String dueDate){
+        this.dueDate = dueDate;
+    }
 
     public void SetRecurrenceType(String RecurrenceType){this.RecurrenceType = RecurrenceType;}
 

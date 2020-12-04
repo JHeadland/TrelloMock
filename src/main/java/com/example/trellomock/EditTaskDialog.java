@@ -78,16 +78,15 @@ public class EditTaskDialog {
     public void HandleChooseDate(ActionEvent actionEvent) {
         LocalDate date = datePicker.getValue();
         System.out.println("Selected date: " + date.toString() + editingTask.getScheduleDate().toString().substring(10));
-        editingTask.SetDueDate(date.toString() + editingTask.getScheduleDate().toString().substring(9));
+        System.out.println(editingTask.getScheduleDate().length());
+        editingTask.SetDueDate(date.toString() + editingTask.getScheduleDate().toString().substring(10));
     }
 //2020-11-25 22:42:13
 //2020-11-25 22:44:27
     public void HandleModifyTask(ActionEvent actionEvent) {
         if (descriptionTextField.getText().trim().length()>0) {
             String description = descriptionTextField.getText().trim();
-            if(datePicker.getValue()!=null) {
-                editingTask.SetDueDate(datePicker.getValue().toString());
-            }
+
             if(colorPicker.getValue()!=null) {
                 int r = ((int) Math.round(colorPicker.getValue().getRed()     * 255)) << 24;
                 int g = ((int) Math.round(colorPicker.getValue().getGreen()   * 255)) << 16;
