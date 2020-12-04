@@ -50,17 +50,16 @@ public class TaskListView extends ListView<Task> {
         });
 
         setOnDragDetected(event -> {
-            ListView<Task> items = (ListView<Task>) event.getSource();
-
             Dragboard dragboard = startDragAndDrop(TransferMode.ANY);
 
             ClipboardContent content = new ClipboardContent();
-            content.putString(java.lang.String.valueOf(items.getSelectionModel().getSelectedItem()));
+            content.putString(java.lang.String.valueOf(this.getSelectionModel().getSelectedItem()));
 
-            int selected = items.getSelectionModel().getSelectedIndex();
-            Object[] cells = items.lookupAll(".cell").toArray();
+            int selected = this.getSelectionModel().getSelectedIndex();
+            Object[] cells = this.lookupAll(".cell").toArray();
             ListCell<Task> cell = (ListCell<Task>) cells[selected];
             cell.setGraphic(null);
+            assert (draggedTask != null);
             draggedTask = cell.getItem();
             dragboard.setDragView(cell.snapshot(null, null));
 
@@ -110,7 +109,6 @@ public class TaskListView extends ListView<Task> {
             }
             event.consume();
         });
-
     }
 
     public void remove(Task t) {
@@ -125,7 +123,7 @@ public class TaskListView extends ListView<Task> {
         return this.taskListState;
     }
 
-    private class TaskCell extends ListCell<Task> implements Observer {
+    private class TaskCell extends ListCell<Task> {
         private Task editedTask;
         Button editTaskButton = new Button();
         Button completeTaskButton = new Button();
@@ -182,8 +180,7 @@ public class TaskListView extends ListView<Task> {
                     thisCell.getItem().setComplete(true);
                     thisCell.getItem().SetState(4);
                     thisCell.getItem().SetColor("LightGreen");
-                    thisCell.setText("");
-                    updateItem(thisCell.getItem(),false);
+                    updateItem(thisCell.getItem(), false);
                 }
             });
         }
@@ -197,7 +194,7 @@ public class TaskListView extends ListView<Task> {
             completeTaskButton.setStyle(null);
             setGraphic(null);
 
-            if(!empty || t != null) {
+            if (!empty || t != null) {
                 label.setText("  " + t.GetDescription() + "\n  Story Points: " + t.GetSPoints());
 
                 if (t.GetColor() != null) {
@@ -249,9 +246,9 @@ public class TaskListView extends ListView<Task> {
                 editedTask.register(new TaskUpdateService() {
                     @Override
                     public void onEvent() {
-                        if(editedTask.GetOverdue()) {
+                        if (editedTask.GetOverdue()) {
                             editedTask.SetColor("Red");
-                        }else{
+                        } else {
                             editedTask.SetState(0);
                             editedTask.setComplete(false);
                         }
@@ -266,25 +263,19 @@ public class TaskListView extends ListView<Task> {
                 if (t.GetRecurrenceType().equals("Every Ten Seconds")) {
                     timer.schedule(editedTask, 10000, 10000);
                     updateItem(t, false);
-                }else if (t.GetRecurrenceType().equals("Every Day")){
+                } else if (t.GetRecurrenceType().equals("Every Day")) {
                     timer.schedule(editedTask, 86400000, 86400000);
                     updateItem(t, false);
-                }
-                else if (t.GetRecurrenceType().equals("Every Other Day")){
-                    timer.schedule(editedTask, 86400000*2, 86400000*2);
+                } else if (t.GetRecurrenceType().equals("Every Other Day")) {
+                    timer.schedule(editedTask, 86400000 * 2, 86400000 * 2);
                     updateItem(t, false);
-                }
-                else if (t.GetRecurrenceType().equals("Every Week")){
-                    timer.schedule(editedTask, 86400000*7, 86400000*7);
+                } else if (t.GetRecurrenceType().equals("Every Week")) {
+                    timer.schedule(editedTask, 86400000 * 7, 86400000 * 7);
                     updateItem(t, false);
                 }
 
             }
-        }
-
-        @Override
-        public void update(Observable o, Object arg) {
-
+            this.updateItem(this.getItem(),false);
         }
     }
 }

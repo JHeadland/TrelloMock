@@ -38,7 +38,7 @@ public class Task extends TimerTask {
     public void run() {
         if(!this.complete)
             overdue = true;
-        listener.onEvent();
+        //listener.onEvent();
     }
 
     public Task(Long taskID, int state, String description,TaskCategory category, String createdBy) {
