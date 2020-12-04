@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +48,11 @@ public class BoardController implements DialogController, Initializable {
     private Long currentlySelectedTask;
     private TaskListView selectedList;
 
-    @FXML private TaskListView backlogList;
-    @FXML private TaskListView toDoList;
-    @FXML private TaskListView doingList;
-    @FXML private TaskListView testingList;
-    @FXML private TaskListView doneList;
+    @FXML private TableColumn backlogList;
+    @FXML private TableColumn toDoList;
+    @FXML private TableColumn doingList;
+    @FXML private TableColumn testingList;
+    @FXML private TableColumn doneList;
     @FXML private Button deleteTaskButton;
 
     @FXML

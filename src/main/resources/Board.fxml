@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,69 +9,51 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import com.example.trellomock.TaskListView?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trellomock.BoardController">
     <children>
-        <AnchorPane layoutY="7.0" prefHeight="97.0" prefWidth="1280.0">
-            <children>
-                <GridPane prefHeight="789.0" prefWidth="1280.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="258.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="697.0" minHeight="10.0" prefHeight="697.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="692.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Backlog">
-                            <font>
-                                <Font name="Comic Sans MS" size="20.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="To Do" GridPane.columnIndex="1">
-                            <font>
-                                <Font name="Comic Sans MS" size="20.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="330.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Doing" GridPane.columnIndex="2">
-                            <font>
-                                <Font name="Comic Sans MS" size="20.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="650.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Testing" GridPane.columnIndex="3">
-                            <font>
-                                <Font name="Comic Sans MS" size="20.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="778.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Done" GridPane.columnIndex="4">
-                            <font>
-                                <Font name="Comic Sans MS" size="20.0" />
-                            </font>
-                        </Label>
-                        <TaskListView fx:id="backlogList" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                        <TaskListView fx:id="toDoList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TaskListView fx:id="doingList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TaskListView id="testingList" fx:id="testingList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <TaskListView id="doneList" fx:id="doneList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Add Task" onAction="#HandleAddTaskClicked" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="753.0" mnemonicParsing="false" text="Task Categories" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Button disable="true" mnemonicParsing="false" text="Delete Item" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2" fx:id = "deleteTaskButton"/>
-
-                        <HBox spacing="10" alignment="CENTER"
-                              GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                            <Button onAction="#clickMemberSettingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Member Settings" textAlignment="CENTER" />
-                            <Button onAction="#clickTeamSettingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Team Settings" textAlignment="CENTER" />
-                        </HBox>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="753.0" mnemonicParsing="false" text="Task Categories" onAction="#taskCategoryButton" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-
-                    </children>
-                </GridPane>
-            </children>
-        </AnchorPane>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Task Board" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="45.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.6" />
+                     </effect>
+                  </Label>
+               </children>
+            </HBox>
+            <TableView maxHeight="-Infinity" maxWidth="1280.0" minHeight="-Infinity" minWidth="1280.0" prefHeight="600.0" prefWidth="1280.0">
+              <columns>
+                <TableColumn fx:id="backlogList" maxWidth="256.0" minWidth="256.0" prefWidth="256.0" resizable="false" text="Backlog" />
+                <TableColumn fx:id="toDoList" maxWidth="256.0" minWidth="256.0" prefWidth="256.0" resizable="false" text="To Do" />
+                  <TableColumn fx:id="doingList" maxWidth="256.0" minWidth="256.0" prefWidth="75.0" resizable="false" text="Doing" />
+                  <TableColumn fx:id="testingList" maxWidth="256.0" minWidth="256.0" prefWidth="256.0" resizable="false" text="Testing" />
+                  <TableColumn fx:id="doneList" maxWidth="256.0" minWidth="256.0" prefWidth="256.0" resizable="false" text="Done" />
+              </columns>
+            </TableView>
+            <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="1280.0" prefHeight="100.0" prefWidth="1280.0" spacing="150.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#HandleAddTaskClicked" text="Add Task" />
+                  <Button fx:id="deleteTaskButton" mnemonicParsing="false" text="Delete Task">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#clickMemberSettingsButton" text="Member Settings" />
+                  <Button mnemonicParsing="false" onAction="#clickTeamSettingsButton" text="Team Settings" />
+                  <Button mnemonicParsing="false" onAction="#taskCategoryButton" text="Task Categories" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
