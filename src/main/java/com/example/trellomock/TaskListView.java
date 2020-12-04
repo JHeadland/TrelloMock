@@ -1,11 +1,7 @@
 package com.example.trellomock;
 
 import com.example.trellomock.task.Task;
-import com.example.trellomock.ScheduledTasks;
 import com.example.trellomock.task.TaskUpdateService;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableBooleanValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -18,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -29,11 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Observable;
-import java.util.Observer;
+
 import java.util.Timer;
 
 public class TaskListView extends ListView<Task> {
@@ -62,6 +53,7 @@ public class TaskListView extends ListView<Task> {
             assert (draggedTask != null);
             draggedTask = cell.getItem();
             dragboard.setDragView(cell.snapshot(null, null));
+            Task t = cell.getItem();
 
             dragboard.setContent(content);
             event.consume();

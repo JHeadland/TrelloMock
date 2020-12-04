@@ -27,9 +27,6 @@ public class Member implements Serializable {
 
     private ArrayList<Long> tasks;
 
-    @Autowired
-    TaskRepository taskRepository;
-
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
@@ -107,17 +104,7 @@ public class Member implements Serializable {
 
     public void setLogged(boolean logged) { this.logged = logged; }
 
-    //public int getStoryPoints() { return this.storyPoints; }
-
-    public int getStoryPoints() {
-        Task task;
-        tasks.forEach(tid -> {
-            task = taskRepository.findById(tid).get();
-            if (task.GetState() == 4)
-                this.storyPoints += task.GetSPoints();
-        });
-        return this.storyPoints;
-    }
+    public int getStoryPoints() { return this.storyPoints; }
 
     public void addStoryPoints(int sp) { this.storyPoints += sp; }
 }

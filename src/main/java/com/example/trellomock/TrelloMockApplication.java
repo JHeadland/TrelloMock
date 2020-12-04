@@ -17,9 +17,6 @@ import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import com.example.trellomock.DateOps;
-
-import java.time.Duration;
 
 @EnableScheduling
 @SpringBootApplication
@@ -82,6 +79,7 @@ public class TrelloMockApplication {
 			taskRepository.save(new Task(8L, 3, "This is a eighth example of a task",category2,"Admin"));
 			taskRepository.save(new Task(9L, 4, "This is a ninth example of a task",category2,"Admin"));
 			taskRepository.save(new Task(10L, 4, "This is a tenth example of a task",category2,"Admin"));
+			taskRepository.save(new Task(11L, 4, "This is an eleventh example of a task",category2,"Admin"));
 
 			Task temp = taskRepository.findById(10L);
 			temp.setPriority(1);
@@ -150,6 +148,9 @@ public class TrelloMockApplication {
 			memberWithTask.assignTask(taskRepository.findById(9L).GetTaskID());
 			memberWithTask.assignTask(taskRepository.findById(10L).GetTaskID());
 			memberRepository.save(memberWithTask);
+			Member memberWithTask2 = memberRepository.findById(2L);
+			memberWithTask2.assignTask(taskRepository.findById(11L).GetTaskID());
+			memberRepository.save(memberWithTask2);
 
 			log.info("Assigned task ID found");
 			log.info("--------------------------------------------");
