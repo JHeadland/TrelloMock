@@ -105,15 +105,15 @@ public class MemberSettingsController implements DialogController, Initializable
 
     @FXML
     public void clickLogoutButton(ActionEvent actionEvent) {
-        member.setLogged(false);
-
         emailField.setText("");
         passwordField.setText("");
 
         dialog.close();
-        screens.loginDialog().show();
         refresh();
-        screens.adminController().refresh();
+        member.setLogged(false);
+        memberRepository.save(member);
+
+        screens.loginDialog().show();
     }
 
     @FXML

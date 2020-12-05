@@ -47,10 +47,12 @@ public class LoginController implements DialogController {
             if (member.getAdminPrivileges()) {
                 dialog.close();
                 screens.adminDialog().show();
+                screens.adminController().refresh();
             }
             else {
                 dialog.close();
                 screens.boardDialog().show();
+                screens.boardController().checkAdminPageButton();
             }
         }
         else {

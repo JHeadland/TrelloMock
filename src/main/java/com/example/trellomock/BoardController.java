@@ -53,6 +53,7 @@ public class BoardController implements DialogController, Initializable {
     @FXML private TaskListView testingList;
     @FXML private TaskListView doneList;
     @FXML private Button deleteTaskButton;
+    @FXML private Button adminPageButton;
 
     @FXML
     @Override
@@ -92,7 +93,6 @@ public class BoardController implements DialogController, Initializable {
         lists.add(doingList);
         lists.add(testingList);
         lists.add(doneList);
-
 
         for (TaskListView tlv : lists) {
             tlv.getItems().addListener(new ListChangeListener() {
@@ -139,6 +139,28 @@ public class BoardController implements DialogController, Initializable {
                     selectedList.getItems().removeIf(t -> t.GetTaskID() == currentlySelectedTask);
                 }
             });
+            adminPageButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent a) {
+                    dialog.close();
+                    screens.adminDialog().show();
+                    screens.adminController().refresh();
+                }
+            });
+        }
+    }
+
+    public void checkAdminPageButton() {
+        member = memberRepository.findByLogged(true);
+
+        if(member.getAdminPrivileges())
+        {
+            adminPageButton.setVisible(true);
+            adminPageButton.setDisable(false);
+        }
+        else {
+            adminPageButton.setVisible(false);
+            adminPageButton.setDisable(true);
         }
     }
 
