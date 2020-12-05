@@ -30,6 +30,8 @@ public class EditTaskDialog {
     private javafx.scene.control.DatePicker datePicker;
     @FXML
     private TextField descriptionTextField;
+    @FXML
+    private TextField storyPointsField;
 
     @FXML
     private Button createTaskButton;
@@ -49,6 +51,7 @@ public class EditTaskDialog {
 
         editingTask = this.appMainObservableList.get(0);
         descriptionTextField.setText(editingTask.GetDescription());
+        storyPointsField.setText(String.valueOf(editingTask.GetSPoints()));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -86,6 +89,7 @@ public class EditTaskDialog {
     public void HandleModifyTask(ActionEvent actionEvent) {
         if (descriptionTextField.getText().trim().length()>0) {
             String description = descriptionTextField.getText().trim();
+            int storyPoints = Integer.valueOf(storyPointsField.getText().trim());
 
             if(colorPicker.getValue()!=null) {
                 int r = ((int) Math.round(colorPicker.getValue().getRed()     * 255)) << 24;
@@ -97,6 +101,7 @@ public class EditTaskDialog {
                 editingTask.SetColor(style);
             }
             editingTask.SetDescription(description);
+            editingTask.SetStoryPoints(storyPoints);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             editingTask.setScheduleDate(java.time.LocalDateTime.now().format(formatter));
             appMainObservableList.set(0, editingTask);

@@ -144,6 +144,7 @@ public class BoardController implements DialogController, Initializable {
                 public void handle(ActionEvent a) {
                     dialog.close();
                     screens.adminDialog().show();
+                    screens.adminController().refresh();
                 }
             });
         }
