@@ -90,6 +90,10 @@ public class TaskListView extends ListView<Task> {
             if (db.hasString()) {
                 draggedTask.SetState(items.getTaskListState());
                 if(this.taskListState == 4)draggedTask.setComplete(true);
+                else{
+                    draggedTask.setComplete(false);
+                    draggedTask.SetColor(null);
+                }
                 items.getItems().add(draggedTask);
 
                 success = true;

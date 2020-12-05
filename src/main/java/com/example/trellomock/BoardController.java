@@ -83,7 +83,12 @@ public class BoardController implements DialogController, Initializable {
                 case 1: toDoList.getItems().add(task); break;
                 case 2: doingList.getItems().add(task); break;
                 case 3: testingList.getItems().add(task); break;
-                case 4: doneList.getItems().add(task); break;
+                case 4: {
+                    task.setComplete(true);
+                    taskRepository.save(task);
+                    doneList.getItems().add(task);
+                    break;
+                }
             }
 
         }
