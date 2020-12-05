@@ -89,6 +89,7 @@ public class TaskListView extends ListView<Task> {
 
             if (db.hasString()) {
                 draggedTask.SetState(items.getTaskListState());
+                if(this.taskListState == 4)draggedTask.setComplete(true);
                 items.getItems().add(draggedTask);
 
                 success = true;
@@ -201,10 +202,14 @@ public class TaskListView extends ListView<Task> {
                     String style = String.format("-fx-control-inner-background: %s;", t.GetColor());
                     setStyle(style);
                 }
+                if (t.getComplete() == true) {
+                    String style = String.format("-fx-control-inner-background: %s;", "LightGreen");
+                    setStyle(style);
+                }
                 if (t.GetOverdue()) {
                     if (t.getComplete()) {
-                        t.SetColor(t.GetColor());
                         t.SetState(0);
+                        t.setComplete(false);
                     } else {
                         t.SetColor("Red"); // TODO Change color only visually in the future
                     }
@@ -254,7 +259,7 @@ public class TaskListView extends ListView<Task> {
                             editedTask.SetColor("");
                             screens.boardController().moveToBacklog(t);
                         }
-                        refresh();
+                        updateItem(t,false);
                     }
                 });
                 System.out.println("We have a task!");
