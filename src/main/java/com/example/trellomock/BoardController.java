@@ -163,6 +163,11 @@ public class BoardController implements DialogController, Initializable {
 
         if(taskDialogObservableList.size()>0){
             Task t = taskDialogObservableList.get(taskDialogObservableList.size()-1);
+            Long maxID = 0L;
+            for (Task temp : taskRepository.findAll())
+                if(temp.GetID() > maxID)maxID = t.GetID();
+
+            t.SetID(maxID+1);
             backlogList.getItems().add(t);
             taskDialogObservableList.remove(t);
         }

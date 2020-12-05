@@ -42,7 +42,7 @@ public class AddTaskDialog implements DialogController {
             int state = Integer.parseInt(stateTextField.getText().trim());
             String description = descriptionTextField.getText().trim();
 
-            Task t = new Task((long) 2L, state, description, tc,loggedMember.getFirstName()); //TODO actual task ID
+            Task t = new Task(2L, state, description, tc,loggedMember.getFirstName()); //TODO actual task ID
             appMainObservableList.add(t);
         }
         closeStage(event);

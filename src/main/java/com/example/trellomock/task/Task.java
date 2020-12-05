@@ -79,6 +79,8 @@ public class Task extends TimerTask {
     public int GetPriority() {return priority;}
 
     public int GetState() { return state; }
+    public Long GetID() { return taskID; }
+
 
     public String GetColor() {return this.color;}
 
@@ -129,4 +131,6 @@ public class Task extends TimerTask {
     public boolean GetOverdue() {return this.overdue;}
 
     public void SetOverdue(boolean od) {this.overdue = od;}
+
+    public void SetID(long ID) {taskID = ID;}
 }
