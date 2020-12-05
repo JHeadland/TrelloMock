@@ -108,7 +108,9 @@ public class TeamSettingsController implements DialogController, Initializable {
 
         dialog.close();
         screens.loginDialog().show();
-        screens.adminController().refresh();
+        refresh();
+
+        memberRepository.save(member);
     }
 
 }

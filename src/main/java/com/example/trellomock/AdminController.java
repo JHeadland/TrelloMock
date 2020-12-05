@@ -120,6 +120,7 @@ public class AdminController implements DialogController, Initializable {
     public void clickBoardButton(ActionEvent actionEvent) {
         dialog.close();
         screens.boardDialog().show();
+        screens.boardController().checkAdminPageButton();
     }
 
     @FXML

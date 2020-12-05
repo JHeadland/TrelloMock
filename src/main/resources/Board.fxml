@@ -59,6 +59,7 @@
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Add Task" onAction="#HandleAddTaskClicked" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="753.0" mnemonicParsing="false" text="Task Categories" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <Button disable="true" mnemonicParsing="false" text="Delete Item" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id = "deleteTaskButton"/>
+                        <Button disable="true" mnemonicParsing="false" text="Admin Page" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id = "adminPageButton"/>
 
                         <HBox spacing="10" alignment="CENTER"
                               GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
